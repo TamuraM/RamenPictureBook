@@ -11,6 +11,8 @@ public class KindButton : MonoBehaviour
     [Tooltip("↑の情報を扱いやすいようにDictionaryにする")] private Dictionary<string, RectTransform> _kindButtonRect = new Dictionary<string, RectTransform>();
     [Tooltip("↑の情報を扱いやすいようにDictionaryにする")] private Dictionary<string, GameObject> _guzaiButtonGo = new Dictionary<string, GameObject>();
     //上のやつ、鈴木先生が送ってきたassetが使えるかもらしい
+
+    //--UI関係--//
     [SerializeField, Header("種類ボタンの移動先上")] Vector2 _movedUpper = default;
     [SerializeField, Header("種類ボタンの移動先下")] Vector2 _movedLower = default;
     [SerializeField, Header("種類ボタンが戻る場所")] RectTransform _originPos = default;

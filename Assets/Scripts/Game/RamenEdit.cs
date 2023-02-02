@@ -31,6 +31,7 @@ public class RamenEdit : MonoBehaviour
     [SerializeField, Header("トッピングを置く場所")] private Transform[] _toppingTrans = new Transform[10];
     [Tooltip("今乗ってるトッピングの数")] private int _nowToppingCount = 0;
 
+    //--UI関係--//
     [SerializeField, Header("トッピングしてる数を表示するテキスト")] private Text _numberText = default;
 
     void Start()

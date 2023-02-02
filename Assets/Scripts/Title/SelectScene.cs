@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using DG.Tweening;
 
 /// <summary>タイトル画面でどんぶりか図鑑をクリックしたら対応するシーンに飛ぶスクリプト</summary>
 public class SelectScene : MonoBehaviour
@@ -11,13 +12,16 @@ public class SelectScene : MonoBehaviour
     [SerializeField, Header("どんぶりにカーソルが乗ってる時に表示するオブジェクト")] private GameObject _selectedBowl = default;
     [SerializeField, Header("図鑑")] private GameObject _pictureBook = default;
     [SerializeField, Header("図鑑にカーソルが乗ってる時に表示するオブジェクト")] private GameObject _selectedPictureBook = default;
-    [SerializeField, Header("フェード用の画像")] Image _fadePanel = default;
     [SerializeField] private bool _isSelectedBowl = false;
     [SerializeField] private bool _isSelectedPictureBook = false;
 
+    //----UI関係---//
     [SerializeField, Header("説明を表示するテキスト")] private Text _ruleText = default;
     [SerializeField, Header("ラーメン制作シーンの説明")] private string _ruleEdit = default;
     [SerializeField, Header("図鑑シーンの説明")] private string _rulePictureBook = default;
+    [SerializeField, Header("フェード用の画像")] private Image _fadePanel = default;
+    [SerializeField, Header("フェードにかかる時間")] private float _fadeTime = 0.3f;
+    private bool _isFade = false;
 
     void Start()
     {
@@ -28,21 +32,34 @@ public class SelectScene : MonoBehaviour
 
     void Update()
     {
-        //カーソルをマウスに合わせて動かす
-        var mousePos = Input.mousePosition;
-        var worldPos = Camera.main.ScreenToWorldPoint(new Vector3(mousePos.x, mousePos.y, gameObject.transform.position.z));
-        gameObject.transform.position = worldPos;
+
+        if(!_isFade) //まだフェードアウトしてないときだけ動くよ
+        {
+            //カーソルをマウスに合わせて動かす
+            var mousePos = Input.mousePosition;
+            var worldPos = Camera.main.ScreenToWorldPoint(new Vector3(mousePos.x, mousePos.y, gameObject.transform.position.z));
+            gameObject.transform.position = worldPos;
+        }
 
         if(Input.GetMouseButtonDown(0))
         {
 
-            if(_isSelectedBowl)
+            if (!_isFade)
             {
-                Debug.Log("ラーメン制作シーンへ移動するよ");
-            }
-            else if(_isSelectedPictureBook)
-            {
-                Debug.Log("ラーメン図鑑シーンへ移動するよ");
+
+                if (_isSelectedBowl)
+                {
+                    Debug.Log("ラーメン制作シーンへ移動するよ");
+                    _isFade = true;
+                    _fadePanel.DOFade(1, 0.3f).SetEase(Ease.Linear).OnComplete(() => SceneManager.LoadScene("Game")).SetAutoKill(); //OnCompleteでシーン移動
+                }
+                else if (_isSelectedPictureBook)
+                {
+                    Debug.Log("ラーメン図鑑シーンへ移動するよ");
+                    _isFade = true;
+                    _fadePanel.DOFade(1, 0.3f).SetEase(Ease.Linear).OnComplete(() => SceneManager.LoadScene("PictureBook")).SetAutoKill(); //OnCompleteでシーン移動
+                }
+
             }
 
         }

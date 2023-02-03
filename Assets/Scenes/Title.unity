@@ -97,7 +97,7 @@ LightmapSettings:
     m_ExportTrainingData: 0
     m_TrainingDataDestination: TrainingData
     m_LightProbeSampleCountMultiplier: 4
-  m_LightingDataAsset: {fileID: 0}
+  m_LightingDataAsset: {fileID: 112000000, guid: 63d7fb229844bcf4f9c0aa2f896bad82, type: 2}
   m_LightingSettings: {fileID: 0}
 --- !u!196 &4
 NavMeshSettings:
@@ -915,12 +915,13 @@ MonoBehaviour:
   _selectedBowl: {fileID: 1890932097}
   _pictureBook: {fileID: 271813469}
   _selectedPictureBook: {fileID: 1326183792}
-  _fadePanel: {fileID: 779064208}
   _isSelectedBowl: 0
   _isSelectedPictureBook: 0
   _ruleText: {fileID: 169466250}
   _ruleEdit: "\u30E9\u30FC\u30E1\u30F3\u3064\u304F\u308B\u3088\uFF01"
   _rulePictureBook: "\u56F3\u9451\u307F\u308C\u308B\u3088\uFF01"
+  _fadePanel: {fileID: 779064208}
+  _fadeTime: 0.3
 --- !u!54 &781272665
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -955,7 +956,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!65 &1326183793
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1155,7 +1156,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!135 &1890932098
 SphereCollider:
   m_ObjectHideFlags: 0

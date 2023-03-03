@@ -10,6 +10,7 @@ public class KindButton : MonoBehaviour
     [SerializeField, Header("それぞれの種類ボタンに必要な情報たち")] private ButtonsInf[] _kindButtons = new ButtonsInf[3];
     [Tooltip("↑の情報を扱いやすいようにDictionaryにする")] private Dictionary<string, RectTransform> _kindButtonRect = new Dictionary<string, RectTransform>();
     [Tooltip("↑の情報を扱いやすいようにDictionaryにする")] private Dictionary<string, GameObject> _guzaiButtonGo = new Dictionary<string, GameObject>();
+    //[Tooltip("具材ボタン背景の初期位置")] private Dictionary<string, Vector2> _guzaiButtonOriginPos = new Dictionary<string, Vector2>();
     //上のやつ、鈴木先生が送ってきたassetが使えるかもらしい
 
     //--UI関係--//
@@ -42,6 +43,7 @@ public class KindButton : MonoBehaviour
         {
             _kindButtonRect.Add(_kindButtons[i].GetKind, _kindButtons[i].GetKindButton);
             _guzaiButtonGo.Add(_kindButtons[i].GetKind, _kindButtons[i].GetGuzaiButton);
+            //_guzaiButtonOriginPos.Add(_kindButtons[i].GetKind, _kindButtons[i].GetGuzaiButton.GetComponent<RectTransform>().anchoredPosition);
         }
 
         _nowKind = Kind.Soup;
@@ -108,6 +110,7 @@ public class KindButton : MonoBehaviour
 
         foreach(var key in keys)
         {
+            //_guzaiButtonGo[key].GetComponent<RectTransform>().anchoredPosition = _guzaiButtonOriginPos[key];
             _guzaiButtonGo[key].SetActive(false);
             _kindButtonRect[key].anchoredPosition = _originPos.anchoredPosition;
         }

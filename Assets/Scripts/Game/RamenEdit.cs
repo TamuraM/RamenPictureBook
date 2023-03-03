@@ -15,7 +15,7 @@ public class RamenEdit : MonoBehaviour
 
     [Tooltip("‚ß‚ñ‚Ìî•ñ")]
     private Dictionary<string, bool> _noodleInf =
-        new Dictionary<string, bool> { { "‚Î‚è‚©‚½", false }, { "‚©‚½‚¢", false }, { "‚Ó‚Â‚¤", false }, { "‚â‚í‚ç‚©‚¢", false }, { "‚È‚µ", true } };
+        new Dictionary<string, bool> { { "‚Î‚è‚©‚½", false }, { "‚©‚½‚ß", false }, { "‚Ó‚Â‚¤", false }, { "‚â‚í‚ç‚©‚ß", false }, { "‚È‚µ", true } };
     /// <summary>¡‚Ì‚ß‚ñ‚Ìî•ñ@true‚É‚È‚Á‚Ä‚é‚à‚Ì‚ª‘I‘ğ‚³‚ê‚Ä‚é</summary>
     public Dictionary<string, bool> NoodleInf => _noodleInf;
 

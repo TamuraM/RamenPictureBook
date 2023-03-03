@@ -1,9 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 using UnityEngine.UI;
-using DG.Tweening;
 
 /// <summary>タイトル画面でどんぶりか図鑑をクリックしたら対応するシーンに飛ぶスクリプト</summary>
 public class SelectScene : MonoBehaviour
@@ -16,11 +14,10 @@ public class SelectScene : MonoBehaviour
     [SerializeField] private bool _isSelectedPictureBook = false;
 
     //----UI関係---//
+    [SerializeField, Header("'SceneChanger")] private SceneChanger _sceneChanger = default;
     [SerializeField, Header("説明を表示するテキスト")] private Text _ruleText = default;
     [SerializeField, Header("ラーメン制作シーンの説明")] private string _ruleEdit = default;
     [SerializeField, Header("図鑑シーンの説明")] private string _rulePictureBook = default;
-    [SerializeField, Header("フェード用の画像")] private Image _fadePanel = default;
-    [SerializeField, Header("フェードにかかる時間")] private float _fadeTime = 0.3f;
     private bool _isFade = false;
 
     void Start()
@@ -51,13 +48,13 @@ public class SelectScene : MonoBehaviour
                 {
                     Debug.Log("ラーメン制作シーンへ移動するよ");
                     _isFade = true;
-                    _fadePanel.DOFade(1, 0.3f).SetEase(Ease.Linear).OnComplete(() => SceneManager.LoadScene("Game")).SetAutoKill(); //OnCompleteでシーン移動
+                    _sceneChanger.SceneChange("Game");
                 }
                 else if (_isSelectedPictureBook)
                 {
                     Debug.Log("ラーメン図鑑シーンへ移動するよ");
                     _isFade = true;
-                    _fadePanel.DOFade(1, 0.3f).SetEase(Ease.Linear).OnComplete(() => SceneManager.LoadScene("PictureBook")).SetAutoKill(); //OnCompleteでシーン移動
+                    _sceneChanger.SceneChange("PictureBook");
                 }
 
             }

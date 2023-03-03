@@ -8,11 +8,14 @@ using System.Linq;
 public class RamenJugde : MonoBehaviour
 {
     [SerializeField, Header("'RamenEdit'")] private RamenEdit _ramenEdit = default;
+    [SerializeField, Header("'RamenEntry'")] private RamenEntry _ramenEntry = default;
     [Tooltip("できあがったラーメンの情報")] private RamenInf _ramenInf = default;
     [SerializeField, Header("出来上がったラーメンの情報を表示するテキスト")] private GameObject _ramenInfText = default;
     [Tooltip("テキスト")] private Text _text = default;
     [SerializeField, Header("終了ダイアログを出すときに消すものたち")] private GameObject[] _editUIGo = new GameObject[6];
     [SerializeField, Header("終了ダイアログ")] private GameObject _dialog = default;
+    [SerializeField, Header("完成アニメーションの時のカメラ")] private GameObject _subCamera = default;
+    [SerializeField, Header("もともとのカメラ")] private GameObject _mainCamera = default;
 
     void Start()
     {
@@ -20,11 +23,6 @@ public class RamenJugde : MonoBehaviour
         _ramenInfText.SetActive(false);
         //各ラーメンのパラメータを取っておきたいかも
         //図鑑管理するスクリプトからでも
-    }
-
-    void Update()
-    {
-
     }
 
     /// <summary>完成ボタンにつける関数　制作を終了するか聞いてくる</summary>
@@ -39,17 +37,18 @@ public class RamenJugde : MonoBehaviour
         _dialog.SetActive(true);
     }
 
-    /// <summary>
-    /// ダイアログのボタンにつける　trueは「はい」、falseは「いいえ」
-    /// </summary>
+    /// <summary>ダイアログのボタンにつける　trueは「はい」、falseは「いいえ」</summary>
     /// <param name="flg"></param>
     public void EndEdit(bool flg)
     {
 
         if (flg) //制作終了
         {
-
-            //「かんせい！」的なアニメーションから、説明文、名前つけに入る
+            //カメラワーク変える
+            _dialog.SetActive(false);
+            _subCamera.SetActive(true);
+            _mainCamera.SetActive(false);
+            _ramenEntry.CompleteAnimation();
         }
         else //制作続行
         {

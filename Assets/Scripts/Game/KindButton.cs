@@ -50,12 +50,6 @@ public class KindButton : MonoBehaviour
         _kindText.text = "スープ";
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-
-    }
-
     /// <summary>
     /// 今の種類が表示されてるボタンにつける　他の種類ボタンが表示される
     /// </summary>

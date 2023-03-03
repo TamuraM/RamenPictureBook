@@ -74,14 +74,12 @@ public class SelectScene : MonoBehaviour
             _selectedBowl.SetActive(true);
             _isSelectedBowl = true;
             _ruleText.text = _ruleEdit;
-            //SelectMode(_selectedBowl, _isSelectedBowl, true);
         }
         else if(other.gameObject == _pictureBook)
         {
             _selectedPictureBook.SetActive(true);
             _isSelectedPictureBook = true;
             _ruleText.text = _rulePictureBook;
-            //SelectMode(_selectedPictureBook, _isSelectedPictureBook, true);
         }
 
     }
@@ -94,21 +92,14 @@ public class SelectScene : MonoBehaviour
             _selectedBowl.SetActive(false);
             _isSelectedBowl = false;
             _ruleText.text = "";
-            //SelectMode(_selectedBowl, _isSelectedBowl, false);
         }
         else if (other.gameObject == _pictureBook)
         {
             _selectedPictureBook.SetActive(false);
             _isSelectedPictureBook = false;
             _ruleText.text = "";
-            //SelectMode(_selectedPictureBook, _isSelectedPictureBook, false);
         }
 
     }
 
-    //private void SelectMode(GameObject mode, bool flg, bool ToF)
-    //{
-    //    mode.SetActive(ToF);
-    //    flg = ToF;
-    //}
 }

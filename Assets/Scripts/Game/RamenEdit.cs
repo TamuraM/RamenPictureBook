@@ -39,11 +39,6 @@ public class RamenEdit : MonoBehaviour
         _numberText.text = $"{_nowToppingCount}/{_maxToppingCount}";
     }
 
-    void Update()
-    {
-
-    }
-
     /// <summary>トッピングの数の表示を変更する</summary>
     private void NumberTextChange()
     {

@@ -11,6 +11,8 @@ public class RamenJugde : MonoBehaviour
     [Tooltip("できあがったラーメンの情報")] private RamenInf _ramenInf = default;
     [SerializeField, Header("出来上がったラーメンの情報を表示するテキスト")] private GameObject _ramenInfText = default;
     [Tooltip("テキスト")] private Text _text = default;
+    [SerializeField, Header("終了ダイアログを出すときに消すものたち")] private GameObject[] _editUIGo = new GameObject[6];
+    [SerializeField, Header("終了ダイアログ")] private GameObject _dialog = default;
 
     void Start()
     {
@@ -25,17 +27,48 @@ public class RamenJugde : MonoBehaviour
 
     }
 
-    /// <summary>完成ボタンにつける関数　出来上がったラーメンがなにラーメンか判定したい</summary>
+    /// <summary>完成ボタンにつける関数　制作を終了するか聞いてくる</summary>
     public void CompleteEdit()
     {
-        _ramenInf = new RamenInf(_ramenEdit.SoupInf, _ramenEdit.NoodleInf, _ramenEdit.ToppingInf);
+        //「終了する？」的なダイアログ出す
+        foreach (var g in _editUIGo)
+        {
+            g.SetActive(false);
+        }
 
-        //とりあえずはコンソールに全部表示させるのとテキストで表示する
-        string completeMessege = $"完成！\n[スープ：{_ramenInf.Soup}] [めん：{_ramenInf.Noodle}] \n" +
-            $"[トッピング：味付けたまご{_ramenInf.Topping[0]}、チャーシュー{_ramenInf.Topping[1]}、ねぎ{_ramenInf.Topping[2]}、\n" +
-            $"メンマ{_ramenInf.Topping[3]}、もやし{_ramenInf.Topping[4]}、コーン{_ramenInf.Topping[5]}、のり{_ramenInf.Topping[6]}]";
-        _text.text = completeMessege;
-        Debug.Log(completeMessege);
+        _dialog.SetActive(true);
+    }
+
+    /// <summary>
+    /// ダイアログのボタンにつける　trueは「はい」、falseは「いいえ」
+    /// </summary>
+    /// <param name="flg"></param>
+    public void EndEdit(bool flg)
+    {
+
+        if (flg) //制作終了
+        {
+
+            //「かんせい！」的なアニメーションから、説明文、名前つけに入る
+        }
+        else //制作続行
+        {
+            _dialog.SetActive(false);
+
+            //ダイアログ消して元に戻す
+            foreach (var g in _editUIGo)
+            {
+                g.SetActive(true);
+            }
+
+        }
+
+    }
+
+    /// <summary>図鑑に登録する内容が全部出来上がった時に押すボタンにつける関数　図鑑に登録します</summary>
+    public void SaveRamenToBook()
+    {
+        RamenRecord.Instance.SaveRamenToBook(_ramenInf);
     }
 
 }
@@ -46,6 +79,7 @@ public class RamenInf
     private string _soup;
     private string _noodle;
     private int[] _topping;
+    //説明文、写真、名前
 
     /// <summary>完成したラーメンのスープ</summary>
     public string Soup => _soup;
@@ -61,10 +95,10 @@ public class RamenInf
     {
         //ループで全部確認して、trueになってるとこを保存
         var soupKeys = soup.Keys;
-        
-        foreach(var key in soupKeys)
+
+        foreach (var key in soupKeys)
         {
-            if(soup[key])
+            if (soup[key])
             {
                 _soup = key;
                 break;
@@ -73,9 +107,9 @@ public class RamenInf
 
         var noodleKeys = noodle.Keys;
 
-        foreach(var key in noodleKeys)
+        foreach (var key in noodleKeys)
         {
-            if(noodle[key])
+            if (noodle[key])
             {
                 _noodle = key;
                 break;

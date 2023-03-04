@@ -79,6 +79,8 @@ public class RamenInf
     private string _noodle;
     private int[] _topping;
     //説明文、写真、名前
+    private string _name;
+    private string _explanatio;
 
     /// <summary>完成したラーメンのスープ</summary>
     public string Soup => _soup;

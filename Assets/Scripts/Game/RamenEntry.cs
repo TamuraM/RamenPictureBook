@@ -9,7 +9,8 @@ public class RamenEntry : MonoBehaviour
 {
     [SerializeField, Header("「完成」のテキストたち")] private GameObject[] _completeText = new GameObject[2];
     [SerializeField, Header("どんぶりの周りを回るカメラの回転の中心")] private GameObject _cameraPivot = default;
-    [Tooltip("説明の入力できる部分のリスト")] private Dictionary<string, string> _explanationList = new Dictionary<string, string> { { "名前", "" }, { "制作者", "" }, { "こだわり", "" } };
+    [Tooltip("説明の入力できる部分のリスト")] private Dictionary<string, string> _explanationList = 
+        new Dictionary<string, string> { { "名前", "" }, { "制作者", "" }, { "こだわり", "" } };
     public Dictionary<string, string> ExplanationList { get => _explanationList; }
     [Tooltip("いま入力してる文字")] private string _nowTyping = "";
     [SerializeField, Header("入力するときの背景")] private GameObject _inputBackground = default;
@@ -31,10 +32,10 @@ public class RamenEntry : MonoBehaviour
 
     /// <summary>自由記入の時に使う　文字を入力できる</summary>
     /// <param name="moji"></param>
-    public void Typing(char moji)
+    public void Typing(string moji)
     {
 
-        if (moji == 'b') //bだったら1文字消す
+        if (moji == "b") //bだったら1文字消す
         {
 
             if (_nowTyping.Length != 0)

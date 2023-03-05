@@ -1069,6 +1069,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 08091179199632c42be5aaa24e3ce7c4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _ramenJugde: {fileID: 69668709}
   _completeText:
   - {fileID: 2034926817}
   - {fileID: 1416024060}
@@ -1077,6 +1078,14 @@ MonoBehaviour:
   _instructionsText: {fileID: 1000179289}
   _inputText: {fileID: 1287133495}
   _inputKey: {fileID: 2006039176}
+  _enterkeys:
+  - {fileID: 1234265912}
+  - {fileID: 754174192}
+  - {fileID: 1272316305}
+  _instructions:
+  - "\u3053\u306E\u30E9\u30FC\u30E1\u30F3\u306E\u540D\u524D\u306F\uFF1F"
+  - "\u3042\u306A\u305F\u306E\u540D\u524D\u306F\uFF1F"
+  - "\u3053\u3060\u308F\u3063\u305F\u3068\u3053\u308D\u306F\uFF1F"
 --- !u!1 &70069403
 GameObject:
   m_ObjectHideFlags: 0
@@ -6409,7 +6418,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &754174193
 RectTransform:
   m_ObjectHideFlags: 0
@@ -6477,11 +6486,11 @@ MonoBehaviour:
       - m_Target: {fileID: 69668710}
         m_TargetAssemblyTypeName: RamenEntry, Assembly-CSharp
         m_MethodName: EnterKey
-        m_Mode: 5
+        m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
+          m_IntArgument: 1
           m_FloatArgument: 0
           m_StringArgument: "\u5236\u4F5C\u8005"
           m_BoolArgument: 0
@@ -7883,7 +7892,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &944936171
 RectTransform:
   m_ObjectHideFlags: 0
@@ -9417,7 +9426,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1186732640
 RectTransform:
   m_ObjectHideFlags: 0
@@ -10137,7 +10146,7 @@ MonoBehaviour:
       - m_Target: {fileID: 69668710}
         m_TargetAssemblyTypeName: RamenEntry, Assembly-CSharp
         m_MethodName: EnterKey
-        m_Mode: 5
+        m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -10419,7 +10428,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1272316306
 RectTransform:
   m_ObjectHideFlags: 0
@@ -10487,11 +10496,11 @@ MonoBehaviour:
       - m_Target: {fileID: 69668710}
         m_TargetAssemblyTypeName: RamenEntry, Assembly-CSharp
         m_MethodName: EnterKey
-        m_Mode: 5
+        m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
+          m_IntArgument: 2
           m_FloatArgument: 0
           m_StringArgument: "\u3053\u3060\u308F\u308A"
           m_BoolArgument: 0
@@ -10631,7 +10640,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1287133494
 RectTransform:
   m_ObjectHideFlags: 0
@@ -10665,7 +10674,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0, g: 0, b: 0, a: 1}
+  m_Color: {r: 0, g: 0, b: 0, a: 0}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -10685,7 +10694,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 1
     m_VerticalOverflow: 1
     m_LineSpacing: 1
-  m_Text: "\u5165\u529B"
+  m_Text: "\u5165\u529B\u3057\u3066\u304F\u3060\u3055\u3044"
 --- !u!222 &1287133496
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -15351,7 +15360,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &2006039177
 RectTransform:
   m_ObjectHideFlags: 0

@@ -9,13 +9,13 @@ public class RamenEdit : MonoBehaviour
 {
     [Tooltip("スープの情報")]
     private Dictionary<string, bool> _soupInf =
-        new Dictionary<string, bool> { { "とんこつ", false }, { "しょうゆ", false }, { "しお", false }, { "みそ", false }, { "なし", true } };
+        new Dictionary<string, bool> { { "とんこつ", true }, { "しょうゆ", false }, { "しお", false }, { "みそ", false }, /*{ "なし", true }*/ };
     /// <summary>今のスープの情報　trueになってるものが選択されてる</summary>
     public Dictionary<string, bool> SoupInf => _soupInf;
 
     [Tooltip("めんの情報")]
     private Dictionary<string, bool> _noodleInf =
-        new Dictionary<string, bool> { { "ばりかた", false }, { "かため", false }, { "ふつう", false }, { "やわらかめ", false }, { "なし", true } };
+        new Dictionary<string, bool> { { "ばりかた", false }, { "かため", false }, { "ふつう", true }, { "やわらかめ", false }, /* "なし", true }*/ };
     /// <summary>今のめんの情報　trueになってるものが選択されてる</summary>
     public Dictionary<string, bool> NoodleInf => _noodleInf;
 

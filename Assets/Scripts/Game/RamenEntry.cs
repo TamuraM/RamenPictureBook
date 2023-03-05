@@ -7,17 +7,20 @@ using DG.Tweening;
 /// <summary>完成ボタンを押した後の動き</summary>
 public class RamenEntry : MonoBehaviour
 {
+    [SerializeField, Header("RamenJugde")] private RamenJugde _ramenJugde = default;
     [SerializeField, Header("「完成」のテキストたち")] private GameObject[] _completeText = new GameObject[2];
     [SerializeField, Header("どんぶりの周りを回るカメラの回転の中心")] private GameObject _cameraPivot = default;
-    [Tooltip("説明の入力できる部分のリスト")] private Dictionary<string, string> _explanationList = 
-        new Dictionary<string, string> { { "名前", "" }, { "制作者", "" }, { "こだわり", "" } };
-    public Dictionary<string, string> ExplanationList { get => _explanationList; }
+    [Tooltip("説明の入力できる部分のリスト　名前、制作者、こだわりの順")] private string[] _explanationList = new string[3];
+    /// <summary>自由に記入されたやつの情報</summary>
+    public string[] ExplanationList { get => _explanationList; }
     [Tooltip("いま入力してる文字")] private string _nowTyping = "";
     [SerializeField, Header("入力するときの背景")] private GameObject _inputBackground = default;
     [SerializeField, Header("なにを入力するかの指示を表示するテキスト")] private Text _instructionsText = default;
     [SerializeField, Header("入力されてる文字を表示するテキスト")] private Text _inputText = default;
     [SerializeField, Header("入力するキー")] private GameObject _inputKey = default;
-    [Tooltip("入力できる最大文字数")] private int _maxStringLength = 5;
+    [SerializeField, Header("エンターキーたち　名前、制作者、こだわり")] private GameObject[] _enterkeys = new GameObject[3];
+    [SerializeField, Header("指示の文字列　名前、制作者、こだわり")] private string[] _instructions = new string[3];
+    [Tooltip("入力できる最大文字数")] private int _maxStringLength = 10;
 
     void Start()
     {
@@ -60,15 +63,26 @@ public class RamenEntry : MonoBehaviour
 
     /// <summary>エンターキーを押したときの処理　入力するものによってキーを変える</summary>
     /// <param name="type"></param>
-    public void EnterKey(string type)
+    public void EnterKey(int index)
     {
-        //入力されたものをDictionaryに入れておく
-        _explanationList[type] = _nowTyping;
+        //入力されたものを配列に入れておく
+        _explanationList[index] = _nowTyping;
 
-        switch (type) //次の指示を出す
+        if(index != _enterkeys.Length - 1) //最後の項目じゃなかったら
         {
-            default:
-                break;
+            //次に入力することに対応するボタンを出現させる
+            _enterkeys[index].SetActive(false);
+            _enterkeys[index + 1].SetActive(true);
+            //指示変える
+            _instructionsText.text = _instructions[index + 1];
+            _nowTyping = "";
+            _inputText.text = _nowTyping;
+        }
+        else //最後の項目だったら
+        {
+            //図鑑に登録する
+            _ramenJugde.SaveRamenToBook();
+            //タイトルボタンと図鑑ボタン表示？
         }
 
     }
@@ -76,6 +90,8 @@ public class RamenEntry : MonoBehaviour
     /// <summary>カメラが回って「完成」の文字が出てくる</summary>
     public void CompleteAnimation()
     {
+        //最初の指示
+        _instructionsText.text = _instructions[0];
         _cameraPivot.transform.DORotate(new Vector3(0, 180, 0), 7).SetEase(Ease.Linear).SetLoops(-1, LoopType.Incremental).SetAutoKill();
         _completeText[0].SetActive(true);
         DOTween.Sequence()
@@ -83,8 +99,7 @@ public class RamenEntry : MonoBehaviour
             .Append(_completeText[1].transform.DOScale(new Vector3(1, 1, 1), 0.8f).SetEase(Ease.Linear).SetAutoKill())
             .Append(_completeText[0].transform.DOScale(new Vector3(0, 0, 0), 0.8f).SetEase(Ease.Linear).SetAutoKill())
             .Append(_completeText[1].transform.DOScale(new Vector3(0, 0, 0), 0.8f).SetEase(Ease.Linear).OnComplete(() => _inputBackground.SetActive(true)).SetAutoKill())
-            .Append(_inputBackground.GetComponent<Image>().DOFade(0.15f, 1.0f).SetEase(Ease.Linear).SetAutoKill())
-            .Append(_instructionsText.DOFade(1, 0.3f).SetEase(Ease.Linear).OnComplete(() => { _instructionsText.color = Color.black; _inputKey.SetActive(true); }).SetAutoKill());
+            .Append(_inputBackground.GetComponent<Image>().DOFade(0.15f, 1.0f).SetEase(Ease.Linear).OnComplete(() => { _instructionsText.color = Color.black; _inputText.color = Color.black; _inputKey.SetActive(true); }).SetAutoKill());
     }
 
 

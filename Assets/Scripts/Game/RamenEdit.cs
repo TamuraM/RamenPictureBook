@@ -30,6 +30,8 @@ public class RamenEdit : MonoBehaviour
     [SerializeField, Header("トッピングできる最大値")] private int _maxToppingCount = 10;
     [SerializeField, Header("トッピングを置く場所")] private Transform[] _toppingTrans = new Transform[10];
     [Tooltip("今乗ってるトッピングの数")] private int _nowToppingCount = 0;
+    [SerializeField, Header("乗せるトッピングのオブジェクト")] private GameObject[] _toppingGO = new GameObject[7];
+    [Tooltip("↑のやつを扱いやすくする")] private Dictionary<string, GameObject> _toppingDic = new Dictionary<string, GameObject>();
 
     //--UI関係--//
     [SerializeField, Header("トッピングしてる数を表示するテキスト")] private Text _numberText = default;
@@ -37,6 +39,13 @@ public class RamenEdit : MonoBehaviour
     void Start()
     {
         _numberText.text = $"{_nowToppingCount}/{_maxToppingCount}";
+        var toppingName = _toppingInf.Keys.ToArray();
+
+        for(int i = 0; i < _toppingGO.Length; i++)
+        {
+            _toppingDic.Add(toppingName[i], _toppingGO[i]);
+        }
+
     }
 
     /// <summary>トッピングの数の表示を変更する</summary>
@@ -66,12 +75,13 @@ public class RamenEdit : MonoBehaviour
 
         if (_nowToppingCount < _maxToppingCount)
         {
+            //指定された位置に具材をおく
+            Instantiate(_toppingDic[topping], _toppingTrans[_nowToppingCount].position, Quaternion.identity);
             _nowToppingCount++;
+            NumberTextChange();
             //指定されたトッピングが増える
             _toppingInf[topping]++;
-            NumberTextChange();
             Debug.Log($"{topping}は{_toppingInf[topping]}個置かれています");
-            //指定された位置に具材をおく
         }
         else
         {

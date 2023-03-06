@@ -10,8 +10,6 @@ public class RamenJugde : MonoBehaviour
     [SerializeField, Header("'RamenEdit'")] private RamenEdit _ramenEdit = default;
     [SerializeField, Header("'RamenEntry'")] private RamenEntry _ramenEntry = default;
     [Tooltip("できあがったラーメンの情報")] private RamenInf _ramenInf = default;
-    [SerializeField, Header("出来上がったラーメンの情報を表示するテキスト")] private GameObject _ramenInfText = default;
-    [Tooltip("テキスト")] private Text _text = default;
     [SerializeField, Header("終了ダイアログを出すときに消すものたち")] private GameObject[] _editUIGo = new GameObject[6];
     [SerializeField, Header("終了ダイアログ")] private GameObject _dialog = default;
     [SerializeField, Header("完成アニメーションの時のカメラ")] private GameObject _subCamera = default;
@@ -19,8 +17,6 @@ public class RamenJugde : MonoBehaviour
 
     void Start()
     {
-        _text = _ramenInfText.GetComponent<Text>();
-        _ramenInfText.SetActive(false);
         //各ラーメンのパラメータを取っておきたいかも
         //図鑑管理するスクリプトからでも
     }

@@ -65,7 +65,7 @@ public class RamenEdit : MonoBehaviour
         {
             _numberText.color = Color.red;
         }
-        else if (_nowToppingCount >= 8)
+        else if (_nowToppingCount >= _maxToppingCount * (4 / 5))
         {
             _numberText.color = Color.yellow;
         }

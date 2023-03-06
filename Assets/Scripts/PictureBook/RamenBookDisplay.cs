@@ -7,6 +7,8 @@ using DG.Tweening;
 
 public class RamenBookDisplay : MonoBehaviour
 {
+    [SerializeField, Header("オーディオソース")] private AudioSource _audioSource = default;
+    [SerializeField, Header("ページをめくるときの音")] private AudioClip _pageMekuru = default;
     [SerializeField, Header("ページのゲームオブジェクト")] private GameObject _pageGO = default;
     [SerializeField, Header("表示する欄たち")] private GameObject[] _displays = new GameObject[6];
     [SerializeField, Header("写真を表示する欄たち")] private Image[] _imageDisplays = new Image[6];
@@ -39,12 +41,6 @@ public class RamenBookDisplay : MonoBehaviour
         }
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
     public void LeftArrow()
     {
 
@@ -55,6 +51,7 @@ public class RamenBookDisplay : MonoBehaviour
         else
         {
             _nowPage--;
+            _audioSource.PlayOneShot(_pageMekuru, 1.5f);
 
             //ページをめくる間非表示にして、次のページの内容を表示
             for (int i = 0; i < _displays.Length; i++)
@@ -105,6 +102,7 @@ public class RamenBookDisplay : MonoBehaviour
         else
         {
             _nowPage++;
+            _audioSource.PlayOneShot(_pageMekuru, 1.5f);
 
             //ページをめくる間非表示にして、次のページの内容を表示
             for (int i = 0; i < _displays.Length; i++)

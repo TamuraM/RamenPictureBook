@@ -14,6 +14,8 @@ public class SelectScene : MonoBehaviour
     [SerializeField] private bool _isSelectedPictureBook = false;
 
     //----UI関係---//
+    [SerializeField, Header("オーディオソース")] private AudioSource _audioSource = default;
+    [SerializeField, Header("クリックしたときの音")] private AudioClip _click = default;
     [SerializeField, Header("'SceneChanger")] private SceneChanger _sceneChanger = default;
     [SerializeField, Header("説明を表示するテキスト")] private Text _ruleText = default;
     [SerializeField, Header("ラーメン制作シーンの説明")] private string _ruleEdit = default;
@@ -47,12 +49,14 @@ public class SelectScene : MonoBehaviour
                 if (_isSelectedBowl)
                 {
                     Debug.Log("ラーメン制作シーンへ移動するよ");
+                    _audioSource.PlayOneShot(_click, 1.5f);
                     _isFade = true;
                     _sceneChanger.SceneChange("Game");
                 }
                 else if (_isSelectedPictureBook)
                 {
                     Debug.Log("ラーメン図鑑シーンへ移動するよ");
+                    _audioSource.PlayOneShot(_click, 1.5f);
                     _isFade = true;
                     _sceneChanger.SceneChange("PictureBook");
                 }

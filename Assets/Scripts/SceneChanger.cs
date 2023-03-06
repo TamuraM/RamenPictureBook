@@ -11,14 +11,14 @@ public class SceneChanger : MonoBehaviour
 
     private void Start()
     {
-        _fadePanel.DOFade(0, 0.3f).SetEase(Ease.Linear)
+        _fadePanel.DOFade(0, 1.5f).SetEase(Ease.Linear)
             .OnComplete(() => _fadePanel.gameObject.SetActive(false)).SetAutoKill();
     }
 
     public void SceneChange(string sceneName)
     {
         _fadePanel.gameObject.SetActive(true);
-        _fadePanel.DOFade(1, 0.3f).SetEase(Ease.Linear)
+        _fadePanel.DOFade(1, 1.5f).SetEase(Ease.Linear)
             .OnComplete(() => SceneManager.LoadScene(sceneName)).SetAutoKill(); //OnComplete‚ÅƒV[ƒ“ˆÚ“®
     }
 

@@ -23,17 +23,6 @@ public class RamenEntry : MonoBehaviour
     [Tooltip("入力できる最大文字数")] private int _maxStringLength = 10;
     [SerializeField, Header("入力が終わった後に表示する画面")] private GameObject _end = default;
 
-    void Start()
-    {
-
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-
-    }
-
     /// <summary>自由記入の時に使う　文字を入力できる</summary>
     /// <param name="moji"></param>
     public void Typing(string moji)

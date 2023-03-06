@@ -24,3 +24,19 @@
 ・[【フリーフォント】夜永オールド明朝]https://booth.pm/ja/items/3489185
 
 ・[Nikkyou Sans Font]https://fontfree.me/3122
+
+・[バーン]https://soundeffect-lab.info/sound/anime/
+
+・[ラーメン屋台のメロディ]https://soundeffect-lab.info/sound/anime/
+
+・[木陰でゆったり]https://otologic.jp/free/bgm/recent.html
+
+・[ほっこりティータイム]https://otologic.jp/free/bgm/bossanova01.html
+
+・[ページをめくる1]https://soundeffect-lab.info/sound/various/various2.html
+
+・[決定ボタンを押す29]https://soundeffect-lab.info/sound/button/
+
+・[決定ボタンを押す34]https://soundeffect-lab.info/sound/button/
+
+・[娯楽委員会]https://otologic.jp/free/bgm/pop-music-piano01.html

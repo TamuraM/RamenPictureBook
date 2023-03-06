@@ -25,7 +25,7 @@ public class RamenEdit : MonoBehaviour
     /// <summary>今のトッピングの情報　数値の数だけ入ってる</summary>
     public Dictionary<string, int> ToppingInf => _toppingInf;
 
-    [SerializeField, Header("表示してるスープのメッシュレンダラー")] private MeshRenderer[] _soup = new MeshRenderer[3];
+    [SerializeField, Header("表示してるスープのメッシュレンダラー")] private MeshRenderer _soup = default;
     [SerializeField, Header("変更するスープのマテリアル")] private Material[] _soupMaterials = new Material[4];
     [Tooltip("↑のやつを扱いやすくする")] private Dictionary<string, Material> _soupDic = new Dictionary<string, Material>();
     [SerializeField, Header("表示してるめんのゲームオブジェクト")] private GameObject _noodle = default;
@@ -118,11 +118,8 @@ public class RamenEdit : MonoBehaviour
         _soupInf[soup] = true;
         Debug.Log($"今のスープは{soup}です");
 
-        //みためを指定されたものに変える]
-        for (int i = 0; i < _soup.Length; i++)
-        {
-            _soup[i].material = _soupDic[soup];
-        }
+        //みためを指定されたものに変える
+            _soup.material = _soupDic[soup];
     }
 
     /// <summary>めんの具材ボタンにつける関数　めんを変更することができる</summary>

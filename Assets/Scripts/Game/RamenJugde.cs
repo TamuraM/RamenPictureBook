@@ -125,6 +125,6 @@ public class RamenInf
         //配列に数字だけ格納
         _topping = topping.Values.ToArray();
         _name = explanation[0];
-        _explanatio = $"{explanation[1]}が作った、{noodle}{soup}ラーメン。\nこだわりは{explanation[2]}";
+        _explanatio = $"{explanation[1]}が作った、\n{_noodle}{_soup}ラーメン。\nこだわりは{explanation[2]}";
     }
 }

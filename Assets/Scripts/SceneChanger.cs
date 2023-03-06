@@ -9,6 +9,12 @@ public class SceneChanger : MonoBehaviour
 {
     [SerializeField, Header("フェード用のパネル")] private Image _fadePanel = default;
 
+    private void Start()
+    {
+        _fadePanel.DOFade(0, 0.3f).SetEase(Ease.Linear)
+            .OnComplete(() => _fadePanel.gameObject.SetActive(false)).SetAutoKill();
+    }
+
     public void SceneChange(string sceneName)
     {
         _fadePanel.gameObject.SetActive(true);

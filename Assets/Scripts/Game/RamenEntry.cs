@@ -21,6 +21,7 @@ public class RamenEntry : MonoBehaviour
     [SerializeField, Header("エンターキーたち　名前、制作者、こだわり")] private GameObject[] _enterkeys = new GameObject[3];
     [SerializeField, Header("指示の文字列　名前、制作者、こだわり")] private string[] _instructions = new string[3];
     [Tooltip("入力できる最大文字数")] private int _maxStringLength = 10;
+    [SerializeField, Header("入力が終わった後に表示する画面")] private GameObject _end = default;
 
     void Start()
     {
@@ -83,7 +84,10 @@ public class RamenEntry : MonoBehaviour
             //図鑑に登録する
             _ramenJugde.SaveRamenToBook();
             //タイトルボタンと図鑑ボタン表示？
-
+            _inputKey.SetActive(false);
+            _instructionsText.color = Color.clear;
+            _inputText.color = Color.clear;
+            _end.SetActive(true);
         }
 
     }

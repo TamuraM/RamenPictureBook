@@ -67,6 +67,7 @@ public class RamenJugde : MonoBehaviour
     /// <summary>}ŠÓ‚É“o˜^‚·‚é“à—e‚ª‘S•”o—ˆã‚ª‚Á‚½‚É‰Ÿ‚·ƒ{ƒ^ƒ“‚É‚Â‚¯‚éŠÖ”@}ŠÓ‚É“o˜^‚µ‚Ü‚·</summary>
     public void SaveRamenToBook()
     {
+        _ramenInf = new RamenInf(_ramenEdit.SoupInf, _ramenEdit.NoodleInf, _ramenEdit.ToppingInf, _ramenEntry.ExplanationList);
         RamenRecord.Instance.SaveRamenToBook(_ramenInf);
     }
 

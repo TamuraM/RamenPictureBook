@@ -83,6 +83,7 @@ public class RamenEntry : MonoBehaviour
             //図鑑に登録する
             _ramenJugde.SaveRamenToBook();
             //タイトルボタンと図鑑ボタン表示？
+
         }
 
     }
@@ -101,6 +102,5 @@ public class RamenEntry : MonoBehaviour
             .Append(_completeText[1].transform.DOScale(new Vector3(0, 0, 0), 0.8f).SetEase(Ease.Linear).OnComplete(() => _inputBackground.SetActive(true)).SetAutoKill())
             .Append(_inputBackground.GetComponent<Image>().DOFade(0.15f, 1.0f).SetEase(Ease.Linear).OnComplete(() => { _instructionsText.color = Color.black; _inputText.color = Color.black; _inputKey.SetActive(true); }).SetAutoKill());
     }
-
 
 }

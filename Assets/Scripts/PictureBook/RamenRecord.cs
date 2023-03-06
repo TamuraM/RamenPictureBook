@@ -7,22 +7,40 @@ public class RamenRecord : MonoBehaviour
 {
     /// <summary>RamenRecordのインスタンス</summary>
     public static RamenRecord Instance;
-    [Tooltip("保存しておくリスト")] private List<RamenInf> _myRamenCollection = new List<RamenInf>();
+    [Tooltip("保存しておくリスト")] private RamenInf[] _myRamenCollection = new RamenInf[30];
+    /// <summary>作ったラーメンの情報を保存しておくリスト</summary>
+    public RamenInf[] MyRamenCollection => _myRamenCollection;
+    [Tooltip("何個目に追加するか")] private int _index = 0;
+    [Tooltip("リストに入る最大値")] private int _maxCount = 30;
+    /// <summary>保存しておくリストに入る最大値</summary>
+    public int MaxCount => _maxCount;
 
-    private void Awake()
+    void Awake()
     {
-        if (Instance == null)
+        // この処理は Start() に書いてもよいが、Awake() に書くことが多い。
+        // 参考: イベント関数の実行順序 https://docs.unity3d.com/ja/2019.4/Manual/ExecutionOrder.html
+        if (Instance)
         {
-            Instance = this;
+            // インスタンスが既にある場合は、破棄する
+            Debug.LogWarning($"SingletonSystem のインスタンスは既に存在するので、{gameObject.name} は破棄します。");
+            Destroy(this.gameObject);
         }
         else
         {
-            Destroy(gameObject);
+            // このクラスのインスタンスが無かった場合は、自分を DontDestroyOnload に置く
+            Instance = this;
+            //仮想シーン(DontDestroyOnLoad)に保存されて、他のシーンを呼び出してもDestroyされない
+            DontDestroyOnLoad(this.gameObject);
         }
     }
 
     void Start()
     {
+
+        for(int i = 0; i < _maxCount; i++)
+        {
+
+        }
 
     }
 
@@ -35,10 +53,15 @@ public class RamenRecord : MonoBehaviour
     /// <summary>図鑑に保存するための関数</summary>
     public void SaveRamenToBook(RamenInf ramenInf)
     {
-        //リストに保存
-        _myRamenCollection.Add(ramenInf);
-        Debug.Log($"図鑑に保存しました。今保存されてるラーメンは{_myRamenCollection.Count}個です。");
+        //最大値よりも多く保存しようとしたら、最初に戻す
+        if(_index + 1 == _maxCount)
+        {
+            _index = 0;
+        }
 
-        //いっぱいだったら保存する前に何かしないと
+        //リストに保存
+        _myRamenCollection[_index] = ramenInf;
+        _index++;
+        Debug.Log($"図鑑に保存しました。今保存されてるラーメンは{_index}個です。");
     }
 }

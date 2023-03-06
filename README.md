@@ -18,3 +18,9 @@
 ・[もやし 3Dモデル]https://booth.pm/ja/items/3781361?BOOTH-APP-CLIENT-VERSION=android_8.0.0_2.10.1
 
 ・[【VRChat】海苔]https://booth.pm/ja/items/4544122
+
+・[モボ]https://booth.pm/ja/items/2811136
+
+・[【フリーフォント】夜永オールド明朝]https://booth.pm/ja/items/3489185
+
+・[Nikkyou Sans Font]https://fontfree.me/3122
